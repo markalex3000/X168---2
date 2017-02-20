@@ -24,14 +24,32 @@ inline void simple_error(string s)	// write ``error: s and exit program
 double ctok(double c)	//convert Celcius to Kelvin
 {
 	double k = c + 273.15;
-	return k;
+	if (k < -273.15) return -273.15;
+	else return k;
+}
+
+double ktoc(double k)	//convert Kelvin to Celius
+{
+	if (k < -273.15) {
+		cout << "Nonsense: not kelvins lower than -273.15 \n";
+		k = -273.15;
+	}
+	double c = k - 273.15;
+	return c;
 }
 
 int main() {
+	double temp{ 0.0 };
 	double c = 0;
-	cin >> c;
-	double k = ctok(c);
-	cout << k << '\n';
+	double k = 0;
+	char korc{ ' ' };
+
+	cout << "Enter temperature followed by 'K' or 'C': ";
+	cin >> temp;
+	cin >> korc;
+	if (korc == 'K') cout << temp << " K = " << ktoc(temp) << " degrees Ceclius\n";
+	else cout << temp << " C = " << ctok(temp) << " kelvins\n";
+
 	keep_window_open();
 	return 0;
 }
