@@ -1,6 +1,6 @@
 // X168 - 2
 
-// Start standsard opening
+// Start standard opening - additional work
 
 #include <iostream>
 #include <string>
